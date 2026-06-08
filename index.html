@@ -6,6 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LovePets</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-slide {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .carousel-slide h3 {
+            padding: 16px;
+            margin: 0;
+            color: #008080;
+        }
+
+        .carousel-slide p {
+            padding: 0 16px 16px;
+            margin: 0;
+            color: #666;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-button {
+            background: rgba(0, 128, 128, 0.8);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .carousel-button:hover {
+            background: rgba(0, 128, 128, 1);
+        }
+
+        .carousel-button.prev:before {
+            content: "❮";
+        }
+
+        .carousel-button.next:before {
+            content: "❯";
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: rgba(0, 128, 128, 1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body class="w3-light-grey">
@@ -26,37 +129,43 @@
             <section class="w3-padding-32">
                 <h2>Bem-vindo ao LovePets!</h2>
                 <div class="w3-white w3-round-large w3-card-4 w3-padding-24 w3-margin-bottom">
-                    <p>É uma alegria receber você e seu melhor amigo em nossa loja. Na LovePets, acreditamos que os animais de
+                    <p>É uma alegria receber você e seu melhor amigo em nossa loja. Na LovePets, acreditamos que os
+                        animais de
                         estimação fazem parte da família e merecem todo o carinho, cuidado e atenção.</p>
-                    <p>Oferecemos produtos de alta qualidade para atender às necessidades do seu pet, desde alimentos nutritivos e
-                        brinquedos divertidos até acessórios confortáveis e itens de higiene. Nossa equipe está sempre pronta para
+                    <p>Oferecemos produtos de alta qualidade para atender às necessidades do seu pet, desde alimentos
+                        nutritivos e
+                        brinquedos divertidos até acessórios confortáveis e itens de higiene. Nossa equipe está sempre
+                        pronta para
                         ajudar você a encontrar o que é melhor para o seu companheiro peludo.</p>
                 </div>
             </section>
 
             <section id="produtos" class="w3-padding-32">
                 <h2>Nossos produtos</h2>
-                <div class="w3-row-padding w3-center">
-                    <div class="w3-third w3-padding-small">
-                        <div class="w3-white w3-round-large w3-card-4 w3-padding-24 w3-margin-bottom">
-                            <h3>Ração Premium</h3>
-                            <img src="img/racao.jpeg" alt="Ração de alta qualidade" class="w3-image w3-round-large w3-margin-bottom">
-                            <p>Alimento balanceado para cães e gatos de todas as idades.</p>
-                        </div>
+                <div class="carousel-container" role="region" aria-label="Carrossel de produtos" aria-live="polite">
+                    <div class="carousel-slide active" role="group" aria-current="true">
+                        <img src="img/racao.jpeg" alt="Ração Premium - Alimento balanceado para cães e gatos">
+                        <h3>Ração Premium</h3>
+                        <p>Alimento balanceado para cães e gatos de todas as idades.</p>
                     </div>
-                    <div class="w3-third w3-padding-small">
-                        <div class="w3-white w3-round-large w3-card-4 w3-padding-24 w3-margin-bottom">
-                            <h3>Brinquedos</h3>
-                            <img src="img/brinquedos.jpeg" alt="Brinquedos para a diversão dos pets" class="w3-image w3-round-large w3-margin-bottom">
-                            <p>Brinquedos divertidos e seguros para o entretenimento do seu pet.</p>
-                        </div>
+                    <div class="carousel-slide" role="group">
+                        <img src="img/brinquedos.jpeg" alt="Brinquedos - Diversão e entretenimento para os pets">
+                        <h3>Brinquedos</h3>
+                        <p>Brinquedos divertidos e seguros para o entretenimento do seu pet.</p>
                     </div>
-                    <div class="w3-third w3-padding-small">
-                        <div class="w3-white w3-round-large w3-card-4 w3-padding-24 w3-margin-bottom">
-                            <h3>Acessórios</h3>
-                            <img src="img/acessorios.jpeg" alt="Acessórios para os pets" class="w3-image w3-round-large w3-margin-bottom">
-                            <p>Acessórios confortáveis e estilosos para seu companheiro.</p>
-                        </div>
+                    <div class="carousel-slide" role="group">
+                        <img src="img/acessorios.jpeg" alt="Acessórios - Conforto e estilo para seu companheiro">
+                        <h3>Acessórios</h3>
+                        <p>Acessórios confortáveis e estilosos para seu companheiro.</p>
+                    </div>
+                    <div class="carousel-controls" role="group" aria-label="Controles de navegação do carrossel">
+                        <button class="carousel-button prev" onclick="changeSlide(-1)" aria-label="Mostrar slide anterior" title="Slide anterior"></button>
+                        <button class="carousel-button next" onclick="changeSlide(1)" aria-label="Mostrar próximo slide" title="Próximo slide"></button>
+                    </div>
+                    <div class="carousel-dots" role="tablist" aria-label="Indicadores de slides">
+                        <span class="carousel-dot active" role="tab" aria-selected="true" aria-label="Slide 1: Ração Premium" onclick="goToSlide(0)" tabindex="0"></span>
+                        <span class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 2: Brinquedos" onclick="goToSlide(1)" tabindex="-1"></span>
+                        <span class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 3: Acessórios" onclick="goToSlide(2)" tabindex="-1"></span>
                     </div>
                 </div>
             </section>
@@ -64,9 +173,12 @@
             <section class="w3-padding-32">
                 <h2>Nossa missão</h2>
                 <div class="w3-white w3-round-large w3-card-4 w3-padding-24 w3-margin-bottom">
-                    <p>Na LovePet, nossa missão é proporcionar bem-estar, saúde e felicidade aos animais de estimação, oferecendo
-                        produtos e serviços de qualidade, atendimento humanizado e orientação responsável para seus tutores.</p>
-                    <p>Trabalhamos para fortalecer a relação entre pessoas e seus pets, promovendo cuidado, carinho e respeito em cada
+                    <p>Na LovePet, nossa missão é proporcionar bem-estar, saúde e felicidade aos animais de estimação,
+                        oferecendo
+                        produtos e serviços de qualidade, atendimento humanizado e orientação responsável para seus
+                        tutores.</p>
+                    <p>Trabalhamos para fortalecer a relação entre pessoas e seus pets, promovendo cuidado, carinho e
+                        respeito em cada
                         atendimento.</p>
                 </div>
             </section>
@@ -93,19 +205,26 @@
                 <h2>Perguntas frequentes</h2>
                 <div class="w3-pale-green w3-round-large w3-padding-16 w3-margin-bottom">
                     <details>
-                        <summary><h2>1. Quais animais a LovePet atende?</h2></summary>
-                        <p>Atendemos principalmente cães e gatos, mas também oferecemos produtos para aves, peixes e pequenos roedores.</p>
+                        <summary>
+                            <h2>1. Quais animais a LovePet atende?</h2>
+                        </summary>
+                        <p>Atendemos principalmente cães e gatos, mas também oferecemos produtos para aves, peixes e
+                            pequenos roedores.</p>
                     </details>
                 </div>
                 <div class="w3-pale-green w3-round-large w3-padding-16 w3-margin-bottom">
                     <details>
-                        <summary><h2>2. Vocês realizam entrega de produtos?</h2></summary>
+                        <summary>
+                            <h2>2. Vocês realizam entrega de produtos?</h2>
+                        </summary>
                         <p>Sim. Realizamos entregas em domicílio para maior comodidade dos nossos clientes.</p>
                     </details>
                 </div>
                 <div class="w3-pale-green w3-round-large w3-padding-16 w3-margin-bottom">
                     <details>
-                        <summary><h2>3. É necessário agendar o banho e tosa?</h2></summary>
+                        <summary>
+                            <h2>3. É necessário agendar o banho e tosa?</h2>
+                        </summary>
                         <p>Sim. O agendamento garante melhor organização e atendimento no horário desejado.</p>
                     </details>
                 </div>
@@ -117,13 +236,19 @@
             <p>WhatsApp: (11) 98888-8888</p>
             <p>E-mail: contato@lovepet.com.br</p>
             <div>
-                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
-                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"></a>
-                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube"></a>
+                <a href="#"><img
+                        src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                        alt="Facebook"></a>
+                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+                        alt="Instagram"></a>
+                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
+                        alt="YouTube"></a>
             </div>
             <p>&copy; Desenvolvido por Rafael de Oliveira Barbosa</p>
         </footer>
     </div>
+    <script src="script.js"></script>
 </body>
+<script src="script.js"></script>
 
 </html>
